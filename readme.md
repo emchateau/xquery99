@@ -15,12 +15,12 @@
 
 ## Introduction
 
-This an adaptation of [Ninety-Nine Scala Problems](http://aperiodic.net/phil/scala/s-99/) by Phil Gold 
+This an adaptation of [Ninety-Nine Kotlin Problems](https://github.com/dkandalov/kotlin-99) by dkandalov wich was itself an adaptation of the [Ninety-Nine Scala Problems](http://aperiodic.net/phil/scala/s-99/) by Phil Gold 
 which itself is an adaptation of the [Ninety-Nine Prolog Problems](https://sites.google.com/site/prologsite/prolog-problems) 
 written by Werner Hett at the Berne University of Applied Sciences in Berne, Switzerland.
-Some problems have been altered to be more amenable to programming in [Kotlin][]. 
+Some problems have been altered to be more amenable to programming in [XQuery][]. 
 
-You might want to do these problems if you want to learn [Kotlin][], are interested in the problems described below, or both.
+You might want to do these problems if you want to learn [XQuery][], are interested in the problems described below, or both.
 The main reason to prefer this to using websites like hackerrank.com and codewars.com
 is that there is no vendor lock-in and no hidden agenda pursued by the website owner.
 
@@ -1428,4 +1428,4 @@ E.g. something like [Sentient Language](http://sentient-lang.org/) :smile:
 [P99c.dat]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/data/p99c.dat
 [P99d.dat]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/data/p99d.dat
 
-[Kotlin]: http://kotlinlang.org
+[xquery]: https://www.w3.org/TR/xquery-30/
