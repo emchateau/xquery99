@@ -24,6 +24,8 @@ Some problems have been altered to be more amenable to programming in [XQuery](h
 
 - See also [Ninety-nine Elm Problems](https://www.gitbook.com/book/johncrane/ninety-nine-elm-problems/details)
 - See also https://github.com/shekhargulati/99-problems (Haskell, Java8, Scala)
+- See also https://wiki.python.org/moin/ProblemSets/99%20Prolog%20Problems%20Solutions
+- See also https://learnjulia.blogspot.com/2014/05/99-problems-in-julia-programming.html
 
 You might want to do these problems if you want to learn [XQuery](https://www.w3.org/TR/xquery-31/), are interested in the problems described below, or both.
 The main reason to prefer this to using websites like hackerrank.com and codewars.com
@@ -57,15 +59,17 @@ All contributions are welcome (including alternative solutions for problems whic
 
 ## Lists
 
+exemples below are currently given in Kotlin
+
 ### [P01][] (*) Find the last element of a list.
-Example:
+Kotlin Example:
 ``` kotlin
 > last(listOf(1, 1, 2, 3, 5, 8))
 8
 ```
 
 ### [P02][] (*) Find the last but one element of a list.
-Example:
+Kotlin Example:
 ``` kotlin
 > penultimate(listOf(1, 1, 2, 3, 5, 8))
 5
@@ -73,298 +77,35 @@ Example:
 
 ### [P03][] (*) Find the Nth element of a list.
 By convention, the first element in the list is element ``0``.
-Example:
+Kotlin Example:
 ``` kotlin
 > nth(2, listOf(1, 1, 2, 3, 5, 8))
 2
 ```
 
 ### [P04][] (*) Find the number of elements of a list.
-Example:
+Kotlin Example:
 ``` kotlin
 > length(listOf(1, 1, 2, 3, 5, 8))
 6
 ```
 
 ### [P05][] (*) Reverse a list.
-Example:
+Kotlin Example:
 ``` kotlin
 > reverse(listOf(1, 1, 2, 3, 5, 8))
 [8, 5, 3, 2, 1, 1]
 ```
 
 ### [P06][] (*) Find out whether a list is a palindrome.
-Example:
+Kotlin Example:
 ``` kotlin
 > isPalindrome(listOf(1, 2, 3, 2, 1))
 true
 ```
 
 ### [P07][] (*) Flatten a nested list structure.
-Example:
-``` kotlin
-> flatten(listOf(listOf(1, 1), 2, listOf(3, listOf(5, 8))))
-[1, 1, 2, 3, 5, 8]
-```
-
-### [P08][] (*) Eliminate consecutive duplicates of list elements.
-If a list contains repeated elements, they should be replaced with a single copy of the element.
-The order of the elements should not be changed.
-Example:
-``` kotlin
-> compress("aaaabccaadeeee".toList())
-[a, b, c, a, d, e]
-```
-
-### [P09][] (*) Pack consecutive duplicates of list elements into sublists.
-If a list contains repeated elements, they should be placed in separate sublists.
-Example:
-``` kotlin
-> pack("aaaabccaadeeee".toList())
-[[a, a, a, a], [b], [c, c], [a, a], [d], [e, e, e, e]]
-```
-
-### [P10][] (*) Run-length encoding of a list.
-Use the result of problem P09 to implement the so-called run-length encoding data compression method.
-Consecutive duplicates of elements are encoded as tuples (N, E) where N is the number of duplicates of the element E.
-Example:
-``` kotlin
-> encode("aaaabccaadeeee".toList())
-[(4, a), (1, b), (2, c), (2, a), (1, d), (4, e)]
-```
-
-### [P11][] (*) Modified run-length encoding.
-Modify the result of problem P10 in such a way that if an element has no duplicates it is simply copied into the result list.
-Only elements with duplicates are transferred as (N, E) terms.
-Example:
-``` kotlin
-> encodeModified("aaaabccaadeeee".toList())
-[(4, a), b, (2, c), (2, a), d, (4, e)]
-```
-
-### [P12][] (*) Decode a run-length encoded list.
-Given a run-length code list generated as specified in the problem P10, construct its uncompressed version.
-Example:
-``` kotlin
-> decode(List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e)))
-[a, a, a, a, b, c, c, a, a, d, e, e, e, e]
-```
-
-### [P13][] (*) Run-length encoding of a list (direct solution).
-Implement the so-called run-length encoding data compression method directly.
-I.e. don't use other methods you've written (like P09's pack); do all the work directly.
-Example:
-``` kotlin
-> encodeDirect("aaaabccaadeeee".toList())
-[(4, a), (1, b), (2, c), (2, a), (1, d), (4, e)]
-```
-
-### [P14][] (*) Duplicate the elements of a list.
-Example:
-``` kotlin
-> duplicate("abccd".toList())
-[a, a, b, b, c, c, c, c, d, d]
-```
-
-### [P15][] (*) Duplicate the elements of a list a given number of times.
-Example:
-``` kotlin
-> duplicateN(3, "abccd".toList())
-[a, a, a, b, b, b, c, c, c, c, c, c, d, d, d]
-```
-
-### [P16][] (*) Drop every Nth element from a list.
-Example:
-``` kotlin
-> drop(3, "abcdefghijk".toList())
-[a, b, d, e, g, h, j, k]
-```
-
-### [P17][] (*) Split a list into two parts.
-The length of the first part is given. Use a `Pair` for your result.
-Example:
-``` kotlin
-> split(3, "abcdefghijk".toList())
-([a, b, c], [d, e, f, g, h, i, j, k])
-```
-
-### [P18][] (*) Extract a slice from a list.
-Given two indices, I and K, the slice is the list containing the elements from and including the Ith element
-up to but not including the Kth element of the original list. Start counting the elements with 0.
-Example:
-``` kotlin
-> slice(3, 7, "abcdefghijk".toList())
-[d, e, f, g]
-```
-
-### [P19][] (*) Rotate a list N places to the left.
-Examples:
-``` kotlin
-> rotate(3, "abcdefghijk".toList())
-[d, e, f, g, h, i, j, k, a, b, c]
-
-> rotate(-2, "abcdefghijk".toList())
-[j, k, a, b, c, d, e, f, g, h, i]
-```
-
-### [P20][] (*) Remove the Kth element from a list.
-Return the list and the removed element in a Tuple. Elements are numbered from 0.
-Example:
-``` kotlin
-> removeAt(1, "abcd".toList())
-([a, c, d], b)
-```
-
-### [P21][] (*) Insert an element at a given position into a list.
-Example:
-``` kotlin
-> insertAt('X', 1, "abcd".toList())
-[a, X, b, c, d]
-```
-
-### [P22][] (*) Create a list containing all integers within a given range.
-Example:
-``` kotlin
-> range(4, 9)
-[4, 5, 6, 7, 8, 9]
-```
-
-### [P23][] (*) Extract a given number of randomly selected elements from a list.
-Make sure there is a way to produce deterministic results.
-Example:
-``` kotlin
-> randomSelect(3, "abcdefgh".toList())
-[c, h, f]
-```
-
-### [P24][] (*) Lotto: Draw N different random numbers from the set 1..M.
-Make sure there is a way to produce deterministic results.
-Example:
-``` kotlin
-> lotto(3, 49)
-[32, 28, 8]
-```
-
-### [P25][] (*) Generate a random permutation of the elements of a list.
-Make sure there is a way to produce deterministic results.
-Hint: Use the solution of problem P23.
-Example:
-``` kotlin
-> randomPermute("abcdef".toList())
-[d, b, e, f, a, c]
-```
-
-### [P26][] (**) Generate the combinations of K distinct objects chosen from the N elements of a list.
-<<<<<<< HEAD
-In how many ways can a committee of 3 be chosen from a group of 12 people?
-There are ``C(12,3) = 220`` possibilities, where ``C(N,K)`` denotes [binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)).
-=======
-In how many ways can a committee of 3 be chosen from a group of 12 people? 
-There are ``C(12,3) = 220`` possibilities, where ``C(N,K)`` denotes [binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient). 
->>>>>>> dkandalov/master
-For pure mathematicians, this result may be great. But we want to really generate all the possibilities.
-Example:
-``` kotlin
-> combinations(3, "abcde".toList())
-[[c, b, a], [d, b, a], [e, b, a], [d, c, a], [e, c, a], [e, d, a], [d, c, b], [e, c, b], [e, d, b], [e, d, c]]
-```
-
-### [P27][] (**) Group the elements of a set into disjoint subsets.
-a) In how many ways can a group of 9 people work in 3 disjoint subgroups of 2, 3 and 4 persons?
-Write a function that generates all the possibilities.
-Example:
-``` kotlin
-> group3(listOf("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida"))
-[[["Ida", "Hugo", "Gary", "Flip"], ["Evi", "David", "Carla"], ["Beat", "Aldo"]], ...
-```
-b) Generalize the above predicate in a way that we can specify a list of group sizes and the predicate will return a list of groups.
-Example:
-``` kotlin
-> group(listOf(2, 2, 5), listOf("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida"))
-[[["Ida", "Hugo", "Gary", "Flip", "Evi"], ["David", "Carla"], ["Beat", "Aldo"]], ...
-```
-Note that we do not want permutations of the group members, i.e. ``[[Aldo, Beat], ...]]`` is the same solution as ``[[Beat, Aldo], ...]``.
-However, ``[[Aldo, Beat], [Carla, David], ...]`` and ``[[Carla, David], [Aldo, Beat], ...]`` are considered to be different solutions.
-
-You may find more about this combinatorial problem in a good book on discrete mathematics under the term
-[multinomial coefficients](http://mathworld.wolfram.com/MultinomialCoefficient.html).
-
-### [P28][] (*) Sorting a list of lists according to length of sublists.
-a) We suppose that a list contains elements that are lists themselves.
-The objective is to sort elements of the list according to their length.
-E.g. short lists first, longer lists later, or vice versa.
-Example:
-``` kotlin
-> lengthSort(listOf("abc".toList(), "de".toList(), "fgh".toList(), "de".toList(), "ijkl".toList(), "mn".toList(), "o".toList()))
-[[o], [d, e], [d, e], [m, n], [a, b, c], [f, g, h], [i, j, k, l]]
-```
-<<<<<<< HEAD
-b) Again, we suppose that a list contains elements that are lists themselves.
-But this time the objective is to sort elements according to their length frequency;
-i.e. in the default, sorting is done ascendingly, lists with rare lengths are placed, others with a more frequent length come later.
-=======
-b) Again, we suppose that a list contains elements that are lists themselves. 
-But this time the objective is to sort elements according to their length frequency; 
-i.e. lists with rare lengths are placed first, others with more frequent lengths come later.
->>>>>>> dkandalov/master
-Example:
-``` kotlin
-> lengthFreqSort(listOf("abc".toList(), "de".toList(), "fgh".toList(), "de".toList(), "ijkl".toList(), "mn".toList(), "o".toList()))
-[[i, j, k, l], [o], [a, b, c], [f, g, h], [d, e], [d, e], [m, n]]
-```
-Note that in the above example, the first two lists in the result have length 4 and 1 and both lengths appear just once.
-The third and fourth lists have length 3 and there are two list of this length. Finally, the last three lists have length 2.
-This is the most frequent length.
-
-
-
-## Lists
-
-### [P01][] (*) Find the last element of a list.
-Example:
-``` kotlin
-> last(listOf(1, 1, 2, 3, 5, 8))
-8
-```
-
-### [P02][] (*) Find the last but one element of a list.
-Example:
-``` kotlin
-> penultimate(listOf(1, 1, 2, 3, 5, 8))
-5
-```
-
-### [P03][] (*) Find the Nth element of a list.
-By convention, the first element in the list is element ``0``.
-Example:
-``` kotlin
-> nth(2, listOf(1, 1, 2, 3, 5, 8))
-2
-```
-
-### [P04][] (*) Find the number of elements of a list.
-Example:
-``` kotlin
-> length(listOf(1, 1, 2, 3, 5, 8))
-6
-```
-
-### [P05][] (*) Reverse a list.
-Example:
-``` kotlin
-> reverse(listOf(1, 1, 2, 3, 5, 8))
-[8, 5, 3, 2, 1, 1]
-```
-
-### [P06][] (*) Find out whether a list is a palindrome.
-Example:
-``` kotlin
-> isPalindrome(listOf(1, 2, 3, 2, 1))
-true
-```
-
-### [P07][] (*) Flatten a nested list structure.
-Example:
+Kotlin Example:
 ``` kotlin
 > flatten(listOf(listOf(1, 1), 2, listOf(3, listOf(5, 8))))
 [1, 1, 2, 3, 5, 8]
@@ -373,7 +114,7 @@ Example:
 ### [P08][] (*) Eliminate consecutive duplicates of list elements.
 If a list contains repeated elements, they should be replaced with a single copy of the element. 
 The order of the elements should not be changed.
-Example:
+Kotlin Example:
 ``` kotlin
 > compress("aaaabccaadeeee".toList())
 [a, b, c, a, d, e]
@@ -381,7 +122,7 @@ Example:
 
 ### [P09][] (*) Pack consecutive duplicates of list elements into sublists.
 If a list contains repeated elements, they should be placed in separate sublists.
-Example:
+Kotlin Example:
 ``` kotlin
 > pack("aaaabccaadeeee".toList())
 [[a, a, a, a], [b], [c, c], [a, a], [d], [e, e, e, e]]
@@ -390,7 +131,7 @@ Example:
 ### [P10][] (*) Run-length encoding of a list.
 Use the result of problem P09 to implement the so-called run-length encoding data compression method. 
 Consecutive duplicates of elements are encoded as tuples (N, E) where N is the number of duplicates of the element E.
-Example:
+Kotlin Example:
 ``` kotlin
 > encode("aaaabccaadeeee".toList())
 [(4, a), (1, b), (2, c), (2, a), (1, d), (4, e)]
@@ -399,7 +140,7 @@ Example:
 ### [P11][] (*) Modified run-length encoding.
 Modify the result of problem P10 in such a way that if an element has no duplicates it is simply copied into the result list. 
 Only elements with duplicates are transferred as (N, E) terms.
-Example:
+Kotlin Example:
 ``` kotlin
 > encodeModified("aaaabccaadeeee".toList())
 [(4, a), b, (2, c), (2, a), d, (4, e)]
@@ -407,7 +148,7 @@ Example:
 
 ### [P12][] (*) Decode a run-length encoded list.
 Given a run-length code list generated as specified in the problem P10, construct its uncompressed version.
-Example:
+Kotlin Example:
 ``` kotlin
 > decode(List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e)))
 [a, a, a, a, b, c, c, a, a, d, e, e, e, e]
@@ -416,28 +157,28 @@ Example:
 ### [P13][] (*) Run-length encoding of a list (direct solution).
 Implement the so-called run-length encoding data compression method directly. 
 I.e. don't use other methods you've written (like P09's pack); do all the work directly.
-Example:
+Kotlin Example:
 ``` kotlin
 > encodeDirect("aaaabccaadeeee".toList())
 [(4, a), (1, b), (2, c), (2, a), (1, d), (4, e)]
 ```
 
 ### [P14][] (*) Duplicate the elements of a list.
-Example:
+Kotlin Example:
 ``` kotlin
 > duplicate("abccd".toList())
 [a, a, b, b, c, c, c, c, d, d]
 ```
 
 ### [P15][] (*) Duplicate the elements of a list a given number of times.
-Example:
+Kotlin Example:
 ``` kotlin
 > duplicateN(3, "abccd".toList())
 [a, a, a, b, b, b, c, c, c, c, c, c, d, d, d]
 ```
 
 ### [P16][] (*) Drop every Nth element from a list.
-Example:
+Kotlin Example:
 ``` kotlin
 > drop(3, "abcdefghijk".toList())
 [a, b, d, e, g, h, j, k]
@@ -445,7 +186,7 @@ Example:
 
 ### [P17][] (*) Split a list into two parts.
 The length of the first part is given. Use a `Pair` for your result.
-Example:
+Kotlin Example:
 ``` kotlin
 > split(3, "abcdefghijk".toList())
 ([a, b, c], [d, e, f, g, h, i, j, k])
@@ -454,7 +195,7 @@ Example:
 ### [P18][] (*) Extract a slice from a list.
 Given two indices, I and K, the slice is the list containing the elements from and including the Ith element 
 up to but not including the Kth element of the original list. Start counting the elements with 0.
-Example:
+Kotlin Example:
 ``` kotlin
 > slice(3, 7, "abcdefghijk".toList())
 [d, e, f, g]
@@ -472,21 +213,21 @@ Examples:
 
 ### [P20][] (*) Remove the Kth element from a list.
 Return the list and the removed element in a Tuple. Elements are numbered from 0.
-Example:
+Kotlin Example:
 ``` kotlin
 > removeAt(1, "abcd".toList())
 ([a, c, d], b)
 ```
 
 ### [P21][] (*) Insert an element at a given position into a list.
-Example:
+Kotlin Example:
 ``` kotlin
 > insertAt('X', 1, "abcd".toList())
 [a, X, b, c, d]
 ```
 
 ### [P22][] (*) Create a list containing all integers within a given range.
-Example:
+Kotlin Example:
 ``` kotlin
 > range(4, 9)
 [4, 5, 6, 7, 8, 9]
@@ -494,7 +235,7 @@ Example:
 
 ### [P23][] (*) Extract a given number of randomly selected elements from a list.
 Make sure there is a way to produce deterministic results.
-Example:
+Kotlin Example:
 ``` kotlin
 > randomSelect(3, "abcdefgh".toList())
 [c, h, f]
@@ -502,7 +243,7 @@ Example:
 
 ### [P24][] (*) Lotto: Draw N different random numbers from the set 1..M.
 Make sure there is a way to produce deterministic results.
-Example:
+Kotlin Example:
 ``` kotlin
 > lotto(3, 49)
 [32, 28, 8]
@@ -511,7 +252,7 @@ Example:
 ### [P25][] (*) Generate a random permutation of the elements of a list.
 Make sure there is a way to produce deterministic results.
 Hint: Use the solution of problem P23.
-Example:
+Kotlin Example:
 ``` kotlin
 > randomPermute("abcdef".toList())
 [d, b, e, f, a, c]
@@ -521,7 +262,7 @@ Example:
 In how many ways can a committee of 3 be chosen from a group of 12 people? 
 There are ``C(12,3) = 220`` possibilities, where ``C(N,K)`` denotes [binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient). 
 For pure mathematicians, this result may be great. But we want to really generate all the possibilities.
-Example:
+Kotlin Example:
 ``` kotlin
 > combinations(3, "abcde".toList())
 [[c, b, a], [d, b, a], [e, b, a], [d, c, a], [e, c, a], [e, d, a], [d, c, b], [e, c, b], [e, d, b], [e, d, c]]
@@ -530,13 +271,13 @@ Example:
 ### [P27][] (**) Group the elements of a set into disjoint subsets.
 a) In how many ways can a group of 9 people work in 3 disjoint subgroups of 2, 3 and 4 persons? 
 Write a function that generates all the possibilities.
-Example:
+Kotlin Example:
 ``` kotlin
 > group3(listOf("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida"))
 [[["Ida", "Hugo", "Gary", "Flip"], ["Evi", "David", "Carla"], ["Beat", "Aldo"]], ...
 ```
 b) Generalize the above predicate in a way that we can specify a list of group sizes and the predicate will return a list of groups.
-Example:
+Kotlin Example:
 ``` kotlin
 > group(listOf(2, 2, 5), listOf("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida"))
 [[["Ida", "Hugo", "Gary", "Flip", "Evi"], ["David", "Carla"], ["Beat", "Aldo"]], ...
@@ -551,7 +292,7 @@ You may find more about this combinatorial problem in a good book on discrete ma
 a) We suppose that a list contains elements that are lists themselves. 
 The objective is to sort elements of the list according to their length. 
 E.g. short lists first, longer lists later, or vice versa.
-Example:
+Kotlin Example:
 ``` kotlin
 > lengthSort(listOf("abc".toList(), "de".toList(), "fgh".toList(), "de".toList(), "ijkl".toList(), "mn".toList(), "o".toList()))
 [[o], [d, e], [d, e], [m, n], [a, b, c], [f, g, h], [i, j, k, l]]
@@ -559,7 +300,7 @@ Example:
 b) Again, we suppose that a list contains elements that are lists themselves. 
 But this time the objective is to sort elements according to their length frequency; 
 i.e. lists with rare lengths are placed first, others with more frequent lengths come later.
-Example:
+Kotlin Example:
 ``` kotlin
 > lengthFreqSort(listOf("abc".toList(), "de".toList(), "fgh".toList(), "de".toList(), "ijkl".toList(), "mn".toList(), "o".toList()))
 [[i, j, k, l], [o], [a, b, c], [f, g, h], [d, e], [d, e], [m, n]]
@@ -693,7 +434,7 @@ This is much simpler in Kotlin so the task omitted assuming it was done in the p
 
 ### [P48][] (*) Truth tables for logical expressions (3).
 Generalize problem 46 in such a way that the logical expression may contain any number of logical variables.
-Example:
+Kotlin Example:
 ``` kotlin
 > true.xor_(true, false, true)
 true
@@ -702,7 +443,7 @@ true
 ### [P49][] (*) Gray code.
 An n-bit [Gray code](https://en.wikipedia.org/wiki/Gray_code) is a sequence of n-bit strings constructed according to certain rules. 
 Find out the construction rules and write a function to generate Gray codes.
-For example:
+For Kotlin Example:
 ``` kotlin
 > grayCodes(bits = 1)
 [0, 1]
@@ -722,7 +463,7 @@ Our objective is to construct a ``Map``, where key is character and value is the
 {a=10, b=00, c=111, d=110, e=010, f=0111, g=0110}
 ```
 b) Write ``encode`` and ``decode`` functions for conversion between ``String`` and encoded ``String`` with zeroes and ones.
-For example:
+For Kotlin Example:
 ``` kotlin
 "this is a sentence".encode(encoding)
 "00110000101011100101011101001110101111011001111011000111"
@@ -905,7 +646,7 @@ We can assign an address number to each node in a complete binary tree by enumer
 starting at the root with number 1. In doing so, we realize that for every node ``X`` with address ``A`` the following property holds: 
 The address of ``X``'s left and right children are ``2*A`` and ``2*A+1`` (assuming the children exist). 
 This fact can be used to elegantly construct a complete binary tree structure.
- 
+
 Write a method ``completeBinaryTree`` that takes as parameters the number of nodes and the value to put in each node.
 ``` kotlin
 > completeBinaryTree(6, "x")
@@ -1263,7 +1004,7 @@ Graph-term form:
 Graph.labeledTerms(TermForm(
     listOf("k", "m", "p", "q"),
     listOf(Term("m", "q", 7), Term("p", "m", 5), Term("p", "q", 9))))
-```                  
+```
 Adjacency-list form:
 ``` kotlin
 Graph.labeledDirectedAdjacent(AdjacencyList(
@@ -1328,7 +1069,7 @@ use it to define two other useful methods: ``Graph.isTree`` and ``Graph.isConnec
 false
 > "[a-b, b-c, a-c]".toGraph().isConnected()
 true
-``` 
+```
 Find out how many spanning trees there are for the graph depicted below.
 
 ![graph][P83-graph]
@@ -1343,7 +1084,7 @@ of a given labeled graph. Hint: Use [Prim's Algorithm](https://en.wikipedia.org/
 ``` kotlin
 > "[a-b/1, b-c/2, a-c/3]".toLabeledGraph().minSpanningTree()
 [a-b/1, b-c/2]
-``` 
+```
 Find minimum spanning tree for the graph below:
 
 ![graph][P84-graph]
@@ -1467,7 +1208,7 @@ Write a function that calculates a numbering scheme for a given tree. What is th
 
 ### [P93][] (***) An arithmetic puzzle.
 Given a list of integer numbers, find a correct way of inserting arithmetic operators ``+-*/()`` such that the result is a correct equation. 
-Example: With the list of numbers ``2, 3, 5, 7, 11`` we can form the equations ``2 - 3 + 5 + 7 = 11``, ``2 = (3 * 5 + 7) / 11`` and others.
+Kotlin Example: With the list of numbers ``2, 3, 5, 7, 11`` we can form the equations ``2 - 3 + 5 + 7 = 11``, ``2 = (3 * 5 + 7) / 11`` and others.
 
 ### [P94][] (***) [Regular graphs](https://en.wikipedia.org/wiki/Regular_graph) with N nodes.
 In a K-regular graph all nodes have a degree of ``K``, i.e. the number of edges incident in each node is ``K``. 
