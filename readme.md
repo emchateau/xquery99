@@ -1,5 +1,7 @@
-# Ninety-Nine Kotlin Problems
+# Ninety-Nine XQuery Problems
 
+[![Build Status](https://travis-ci.org/dkandalov/kotlin-99.svg?branch=master)](https://travis-ci.org/dkandalov/kotlin-99)
+[![Gitter chat](https://badges.gitter.im/kotlin-99/chat.svg)](https://gitter.im/kotlin-99/Lobby)
 
 ## Table of Contents
 
@@ -50,7 +52,6 @@ If this is boring for you, feel free to jump to [Binary Trees](#binary-trees).
 
 All contributions are welcome (including alternative solutions for problems which already have a solution).
 
-[![Build Status](https://travis-ci.org/dkandalov/kotlin-99.svg?branch=master)](https://travis-ci.org/dkandalov/kotlin-99)
 
 
 ## Lists
@@ -141,7 +142,7 @@ Example:
 ```
 
 ### [P12][] (*) Decode a run-length encoded list.
-Given a run-length code list generated as specified in problem P10, construct its uncompressed version.
+Given a run-length code list generated as specified in the problem P10, construct its uncompressed version.
 Example:
 ``` kotlin
 > decode(List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e)))
@@ -179,7 +180,7 @@ Example:
 ```
 
 ### [P17][] (*) Split a list into two parts.
-The length of the first part is given. Use a Tuple for your result.
+The length of the first part is given. Use a `Pair` for your result.
 Example:
 ``` kotlin
 > split(3, "abcdefghijk".toList())
@@ -216,8 +217,8 @@ Example:
 ### [P21][] (*) Insert an element at a given position into a list.
 Example:
 ``` kotlin
-> insertAt('new, 1, "abcd".toList())
-[a, X, b, d]
+> insertAt('X', 1, "abcd".toList())
+[a, X, b, c, d]
 ```
 
 ### [P22][] (*) Create a list containing all integers within a given range.
@@ -239,7 +240,7 @@ Example:
 Make sure there is a way to produce deterministic results.
 Example:
 ``` kotlin
-> lotto(6, 49)
+> lotto(3, 49)
 [32, 28, 8]
 ```
 
@@ -253,8 +254,13 @@ Example:
 ```
 
 ### [P26][] (**) Generate the combinations of K distinct objects chosen from the N elements of a list.
+<<<<<<< HEAD
 In how many ways can a committee of 3 be chosen from a group of 12 people?
 There are ``C(12,3) = 220`` possibilities, where ``C(N,K)`` denotes [binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)).
+=======
+In how many ways can a committee of 3 be chosen from a group of 12 people? 
+There are ``C(12,3) = 220`` possibilities, where ``C(N,K)`` denotes [binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient). 
+>>>>>>> dkandalov/master
 For pure mathematicians, this result may be great. But we want to really generate all the possibilities.
 Example:
 ``` kotlin
@@ -291,9 +297,15 @@ Example:
 > lengthSort(listOf("abc".toList(), "de".toList(), "fgh".toList(), "de".toList(), "ijkl".toList(), "mn".toList(), "o".toList()))
 [[o], [d, e], [d, e], [m, n], [a, b, c], [f, g, h], [i, j, k, l]]
 ```
+<<<<<<< HEAD
 b) Again, we suppose that a list contains elements that are lists themselves.
 But this time the objective is to sort elements according to their length frequency;
 i.e. in the default, sorting is done ascendingly, lists with rare lengths are placed, others with a more frequent length come later.
+=======
+b) Again, we suppose that a list contains elements that are lists themselves. 
+But this time the objective is to sort elements according to their length frequency; 
+i.e. lists with rare lengths are placed first, others with more frequent lengths come later.
+>>>>>>> dkandalov/master
 Example:
 ``` kotlin
 > lengthFreqSort(listOf("abc".toList(), "de".toList(), "fgh".toList(), "de".toList(), "ijkl".toList(), "mn".toList(), "o".toList()))
@@ -415,7 +427,7 @@ false
 Write a function called ``printTruthTable`` which prints the truth table of a given logical expression.
 ``` kotlin
 > printTruthTable{ a, b -> a.and_(a.or_(b.not_())) }
-a	    b	    result
+a	b	result
 true	true	true
 true	false	true
 false	true	false
@@ -423,7 +435,7 @@ false	false	false
 ```
 
 ### P47 (*) Truth tables for logical expressions (2).
-For scala the task was to use implicit conversion.
+For Scala the task was to use implicit conversion.
 This is much simpler in Kotlin so the task omitted assuming it was done in the previous problem.
 
 ### [P48][] (*) Truth tables for logical expressions (3).
@@ -767,8 +779,13 @@ A multiway tree is never empty. The set of successor trees is sometimes called a
 
 ![Multiway tree][multiway-tree]
 
+<<<<<<< HEAD
 The code to represent these is somewhat simpler than the code for binary trees, partly because we don't separate classes
 for nodes and terminators, and partly because we don't need the restriction that the value type be ordered.
+=======
+The code to represent multiway-trees is somewhat simpler than the code for binary trees, partly because we don't separate classes 
+for nodes and terminators, and partly because we don't need the restriction for the value type to be ordered.
+>>>>>>> dkandalov/master
 ``` kotlin
 data class MTree<out T>(val value: T, val children: List<MTree<T>> = emptyList()) {
 
@@ -815,8 +832,13 @@ afg^^c^bd^e^^^
 ```
 
 ### [P71][] (*) Determine the internal path length of a tree.
+<<<<<<< HEAD
 We define the internal path length of a multiway tree as the total sum of the path lengths from the root to all nodes of the tree.
 By this definition, the tree in the figure of problem [P70B](#p70b-tree-construction-from-a-node-string)
+=======
+We define the internal path length of a multiway tree as the total sum of the path lengths from the root to all nodes of the tree. 
+By this definition, the tree in the figure of problem [P70B](#p70b--tree-construction-from-a-node-string) 
+>>>>>>> dkandalov/master
 has an internal path length of 9. Write a method ``internalPathLength`` to return that sum.
 ``` kotlin
 > "afg^^c^bd^e^^^".convertToMTree().internalPathLength()
@@ -868,10 +890,17 @@ but I think that would add too much of a barrier to the following questions.
 
 ![graph][undirected-graph]
 
+<<<<<<< HEAD
 Our graphs use an incidence list internally. Each has a list of nodes and a list of edges.
 Each node also has a list of edges that connect it to other nodes.
 In a [directed graph](https://en.wikipedia.org/wiki/Directed_graph),
 nodes that are the target of arcs do not have references to those arcs in their adjacency list.
+=======
+Our graphs use an incidence list internally. Each has a list of nodes and a list of edges. 
+Each node also has a list of edges that connect it to other nodes. 
+In a [directed graph](https://en.wikipedia.org/wiki/Directed_graph), 
+nodes, that are the target of arcs, do not have references to those arcs in their adjacency list.
+>>>>>>> dkandalov/master
 ``` kotlin
 class Graph<T, U> {
     val nodes: MutableMap<T, Node<T, U>> = HashMap()
@@ -1109,8 +1138,13 @@ of a given node in undirected graph.
 > "[a-b, b-c, a-c, a-d]".toGraph().nodes["a"].degree()
 3
 ```
+<<<<<<< HEAD
 b) Use [Welsh-Powell's](http://graphstream-project.org/doc/Algorithms/Welsh-Powell_1.0/) algorithm
 to paint the nodes of an undirected graph in such a way that adjacent nodes have different colors.
+=======
+b) Use [Welsh-Powell's](http://graphstream-project.org/doc/Algorithms/Welsh-Powell/) algorithm 
+to paint the nodes of an undirected graph in such a way that adjacent nodes have different colors. 
+>>>>>>> dkandalov/master
 Write a method ``colorNodes`` that returns a list of tuples, each of which contains a node and an integer representing its color.
 ``` kotlin
 > "[a-b, b-c, a-c, a-d]".toGraph().colorNodes()
@@ -1235,17 +1269,17 @@ Sudoku puzzles go like this:
 ```
 Problem          Solution
 
-..4|8..|.17	     934|825|617	     
-67.|9..|...	     672|914|853
-5.8|.3.|..4      518|637|924
----+---+---      ---+---+---
-3..|74.|1..      325|748|169
-.69|...|78.      469|153|782
-..1|.69|..5      781|269|435
----+---+---      ---+---+---
-1..|.8.|3.6	     197|582|346
-...|..6|.91	     853|476|291
-24.|..1|5..      246|391|578
+..4|8..|.17	 934|825|617
+67.|9..|...	 672|914|853
+5.8|.3.|..4	 518|637|924
+---+---+---	 ---+---+---
+3..|74.|1..	 325|748|169
+.69|...|78.	 469|153|782
+..1|.69|..5	 781|269|435
+---+---+---	 ---+---+---
+1..|.8.|3.6	 197|582|346
+...|..6|.91	 853|476|291
+24.|..1|5..	 246|391|578
 ```
 Every cell in the puzzle belongs to a (horizontal) row and a (vertical) column, as well as to one single ``3×3`` square.
 At the beginning, some of the cells carry a single-digit number between ``1`` and ``9``.
@@ -1318,116 +1352,120 @@ framework is called a site. Our problem is to find a compatible way of placing w
 E.g. something like [Sentient Language](http://sentient-lang.org/) :smile:
 
 
-[P01]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P01.kt
-[P02]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P02.kt
-[P03]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P03.kt
-[P04]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P04.kt
-[P05]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P05.kt
-[P06]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P06.kt
-[P07]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P07.kt
-[P08]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P08.kt
-[P09]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P09.kt
-[P10]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P10.kt
-[P11]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P11.kt
-[P12]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P12.kt
-[P13]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P13.kt
-[P14]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P14.kt
-[P15]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P15.kt
-[P16]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P16.kt
-[P17]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P17.kt
-[P18]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P18.kt
-[P19]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P19.kt
-[P20]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P20.kt
-[P21]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P21.kt
-[P22]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P22.kt
-[P23]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P23.kt
-[P24]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P24.kt
-[P25]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P25.kt
-[P26]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P26.kt
-[P27]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P27.kt
-[P28]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/lists/P28.kt
+[P01]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P01.kt
+[P02]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P02.kt
+[P03]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P03.kt
+[P04]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P04.kt
+[P05]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P05.kt
+[P06]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P06.kt
+[P07]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P07.kt
+[P08]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P08.kt
+[P09]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P09.kt
+[P10]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P10.kt
+[P11]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P11.kt
+[P12]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P12.kt
+[P13]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P13.kt
+[P14]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P14.kt
+[P15]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P15.kt
+[P16]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P16.kt
+[P17]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P17.kt
+[P18]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P18.kt
+[P19]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P19.kt
+[P20]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P20.kt
+[P21]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P21.kt
+[P22]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P22.kt
+[P23]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P23.kt
+[P24]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P24.kt
+[P25]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P25.kt
+[P26]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P26.kt
+[P27]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P27.kt
+[P28]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/lists/P28.kt
 
-[P31]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P31.kt
-[P32]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P32.kt
-[P33]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P33.kt
-[P34]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P34.kt
-[P35]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P35.kt
-[P36]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P36.kt
-[P37]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P37.kt
-[P38]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P38.kt
-[P39]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P39.kt
-[P40]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P40.kt
-[P41]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/arithmetic/P41.kt
+[P31]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P31.kt
+[P32]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P32.kt
+[P33]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P33.kt
+[P34]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P34.kt
+[P35]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P35.kt
+[P36]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P36.kt
+[P37]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P37.kt
+[P38]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P38.kt
+[P39]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P39.kt
+[P40]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P40.kt
+[P41]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/arithmetic/P41.kt
 
-[P46]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/logic/P46.kt
-[P48]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/logic/P48.kt
-[P49]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/logic/P49.kt
-[P50]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/logic/P50.kt
+[P46]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/logic/P46.kt
+[P48]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/logic/P48.kt
+[P49]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/logic/P49.kt
+[P50]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/logic/P50.kt
 
-[P55]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P55.kt
-[P56]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P56.kt
-[P57]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P57.kt
-[P58]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P58.kt
-[P59]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P59.kt
-[P60]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P60.kt
-[P61]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P61.kt
-[P62]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P62.kt
-[P63]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P63.kt
-[P64]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P64.kt
-[P65]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P65.kt
-[P66]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P66.kt
-[P67]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P67.kt
-[P68]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P68.kt
-[P69]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/binarytrees/P69.kt
+[P55]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P55.kt
+[P56]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P56.kt
+[P57]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P57.kt
+[P58]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P58.kt
+[P59]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P59.kt
+[P60]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P60.kt
+[P61]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P61.kt
+[P62]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P62.kt
+[P63]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P63.kt
+[P64]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P64.kt
+[P65]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P65.kt
+[P66]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P66.kt
+[P67]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P67.kt
+[P68]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P68.kt
+[P69]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/binarytrees/P69.kt
 
-[P70A]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/multiwaytrees/P70A.kt
-[P70B]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/multiwaytrees/P70B.kt
-[P71]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/multiwaytrees/P71.kt
-[P72]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/multiwaytrees/P72.kt
-[P73]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/multiwaytrees/P73.kt
+[P70A]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/multiwaytrees/P70A.kt
+[P70B]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/multiwaytrees/P70B.kt
+[P71]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/multiwaytrees/P71.kt
+[P72]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/multiwaytrees/P72.kt
+[P73]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/multiwaytrees/P73.kt
 
-[P80]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P80.kt
-[P81]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P81.kt
-[P82]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P82.kt
-[P83]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P83.kt
-[P84]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P84.kt
-[P85]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P85.kt
-[P86]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P86.kt
-[P87]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P87.kt
-[P88]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P88.kt
-[P89]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/graphs/P89.kt
+[P80]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P80.kt
+[P81]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P81.kt
+[P82]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P82.kt
+[P83]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P83.kt
+[P84]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P84.kt
+[P85]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P85.kt
+[P86]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P86.kt
+[P87]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P87.kt
+[P88]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P88.kt
+[P89]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/graphs/P89.kt
 
-[P90]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P90.kt
-[P91]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P91.kt
-[P92]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P92.kt
-[P93]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P93.kt
-[P94]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P94.kt
-[P95]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P95.kt
-[P96]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P96.kt
-[P97]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P97.kt
-[P98]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P98.kt
-[P99]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P99.kt
-[P100]: https://github.com/dkandalov/kotlin-99/blob/master/src/org/kotlin99/misc/P100.kt
+[P90]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P90.kt
+[P91]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P91.kt
+[P92]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P92.kt
+[P93]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P93.kt
+[P94]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P94.kt
+[P95]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P95.kt
+[P96]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P96.kt
+[P97]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P97.kt
+[P98]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P98.kt
+[P99]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P99.kt
+[P100]: https://github.com/dkandalov/kotlin-99/blob/master/src/test/kotlin/org/kotlin99/misc/P100.kt
 
 
-[binary-tree]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p67.gif "Binary tree"
-[P64-layout]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p64.gif
-[P65-layout]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p65.gif
-[P66-layout]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p66.gif
-[P67-tree]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p67.gif
-[multiway-tree]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p70.gif
-[P73-s-expr]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p73.png
-[undirected-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/graph1.gif
-[directed-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/graph2.gif
-[directed-labeled-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/graph3.gif
-[P83-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p83.gif
-[P84-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p84.gif
-[P92-tree1]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p92a.gif
-[P92-tree2]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p92b.gif
-[P99-crossword]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/img/p99.gif
+[binary-tree]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p67.gif "Binary tree"
+[P64-layout]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p64.gif
+[P65-layout]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p65.gif
+[P66-layout]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p66.gif
+[P67-tree]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p67.gif
+[multiway-tree]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p70.gif
+[P73-s-expr]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p73.png
+[undirected-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/graph1.gif
+[directed-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/graph2.gif
+[directed-labeled-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/graph3.gif
+[P83-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p83.gif
+[P84-graph]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p84.gif
+[P92-tree1]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p92a.gif
+[P92-tree2]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p92b.gif
+[P99-crossword]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/images/p99.gif
 [P99a.dat]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/data/p99a.dat
 [P99b.dat]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/data/p99b.dat
 [P99c.dat]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/data/p99c.dat
 [P99d.dat]: https://raw.githubusercontent.com/dkandalov/kotlin-99/master/data/p99d.dat
 
+<<<<<<< HEAD
 [xquery]: https://www.w3.org/TR/xquery-30/
+=======
+[Kotlin]: http://kotlinlang.org
+>>>>>>> dkandalov/master
